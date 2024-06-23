@@ -8,7 +8,7 @@ PasswordEncryptionTool - это приложение для шифрования
 
 1. Клонируйте репозиторий:
 
-   git clone https://github.com/yourusername/PasswordEncryptionTool.git
+   git clone https://github.com/coldborne/PasswordEncryptionTool.git
 
 2. Откройте проект в вашей среде разработки (например, Visual Studio или Rider).
 
