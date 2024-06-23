@@ -10,6 +10,8 @@
 
 # Rider project files
 .idea/
+.idea/*
+*.iml
 
 # Ignore .NET Core related files
 project.lock.json
@@ -35,3 +37,6 @@ artifacts/
 
 # Ignore the local NuGet repository
 packages/
+
+# Ignore the build directory
+_build/
