@@ -9,7 +9,7 @@ namespace PasswordEncryptionTool
     {
         public static void Main(string[] args)
         {
-            const string PasswordEncryptionMenuItem = "1";
+            const string PasswordEncryptionMenuItem = "3";
             const string PasswordDecryptionMenuItem = "2";
 
             Console.WriteLine(
