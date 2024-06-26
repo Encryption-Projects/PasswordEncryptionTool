@@ -9,11 +9,13 @@ namespace PasswordEncryptionTool
     {
         public static void Main(string[] args)
         {
+            const string PasswordEncryptionMenuItem = "1";
+            const string PasswordDecryptionMenuItem = "2";
+
             Console.WriteLine(
                 "Добро пожаловать в приложение для шифрования/дешифрования паролей, сохранённых в txt файле");
-            Console.WriteLine("1 - Зашифровать пароли");
-            Console.WriteLine("2 - Дешифровать пароли");
-            Console.WriteLine("3 - Выйти из программы");
+            Console.WriteLine($"{PasswordEncryptionMenuItem} - Зашифровать пароли");
+            Console.WriteLine($"{PasswordDecryptionMenuItem} - Дешифровать пароли");
 
             string userInput = Console.ReadLine();
 
@@ -29,14 +31,14 @@ namespace PasswordEncryptionTool
 
             switch (userInput)
             {
-                case "1":
+                case PasswordEncryptionMenuItem:
                     Console.Write("Введите соль (дополнительная строка для улучшения шифрования): ");
                     salt = Console.ReadLine();
                     string encryptedFilePath = Path.Combine(projectDirectory, "encrypted_passwords.txt");
                     EncryptFile(filePath, encryptedFilePath, password, salt);
                     break;
 
-                case "2":
+                case PasswordDecryptionMenuItem:
                     Console.Write("Введите соль, которая была использована при шифровании: ");
                     salt = Console.ReadLine();
                     string decryptedFilePath = Path.Combine(projectDirectory, "decrypted_passwords.txt");
@@ -60,7 +62,7 @@ namespace PasswordEncryptionTool
             {
                 using (Aes aesAlgorithm = Aes.Create())
                 {
-                    var key = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(salt), 10000);
+                    Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(salt), 10000);
                     aesAlgorithm.Key = key.GetBytes(32);
                     aesAlgorithm.IV = key.GetBytes(16);
 
@@ -86,7 +88,7 @@ namespace PasswordEncryptionTool
             {
                 using (Aes aesAlg = Aes.Create())
                 {
-                    var key = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(salt), 10000);
+                    Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(password, Encoding.UTF8.GetBytes(salt), 10000);
                     aesAlg.Key = key.GetBytes(32);
                     aesAlg.IV = key.GetBytes(16);
 
